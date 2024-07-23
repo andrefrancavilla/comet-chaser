@@ -216,7 +216,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 2, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -809,11 +809,113 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e815445ac5db534aa7cc06dbf6f0cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiScore: {fileID: 1081693416}
+  maxPlayerLives: 3
   scorePerSecond: 1000
   maxGameDurationSeconds: 300
   onScoreLossSlowdownPercentage: 20
-  _allObstacles: []
-  uiScore: {fileID: 1081693416}
+  _allObstacles:
+  - obstaclePrefab: {fileID: 8889570080313198490, guid: 88dc69546f992a24a9d4410ca0f33507, type: 3}
+    minObstacleSize: 0.5
+    maxObstacleSize: 1
+    maxScoreVariation: -50
+    minObstacleFallDuration: 0.4
+    maxObstacleFallDuration: 2
+    fallDurationVariationPercentage: 20
+    progressionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - obstaclePrefab: {fileID: 6993241327760456478, guid: 99035396d0369fd4998d256df192248d, type: 3}
+    minObstacleSize: 0.5
+    maxObstacleSize: 1
+    maxScoreVariation: -50
+    minObstacleFallDuration: 0.1
+    maxObstacleFallDuration: 2
+    fallDurationVariationPercentage: 20
+    progressionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  _allBonuses:
+  - obstaclePrefab: {fileID: 2346618890412484140, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+    minObstacleSize: 1
+    maxObstacleSize: 1
+    maxScoreVariation: 10
+    minObstacleFallDuration: 2
+    maxObstacleFallDuration: 2
+    fallDurationVariationPercentage: 0
+    progressionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  minObstacleSpawnInterval: 0.2
+  maxObstacleSpawnInterval: 0.6
+  timeToFastestObstacleSpawnInterval: 120
+  bonusSpawnSequenceSize: 4
+  minBonusSpawnInterval: 1
+  maxBonusSpawnInterval: 5
+  timeToFastestBonusSpawnInterval: 300
 --- !u!4 &2062352498
 Transform:
   m_ObjectHideFlags: 0
@@ -905,6 +1007,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074747996}
   m_CullTransparentMesh: 1
+--- !u!1001 &1045603351564350584
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2346618890412484140, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+      propertyPath: m_Name
+      value: Star Fragment
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346618890412484140, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570711032288465982, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570711032288465982, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570711032288465982, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570711032288465982, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570711032288465982, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570711032288465982, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570711032288465982, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570711032288465982, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570711032288465982, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570711032288465982, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -915,3 +1078,4 @@ SceneRoots:
   - {fileID: 173913719}
   - {fileID: 834451903}
   - {fileID: 2062352498}
+  - {fileID: 1045603351564350584}

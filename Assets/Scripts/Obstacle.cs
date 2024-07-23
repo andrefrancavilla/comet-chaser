@@ -1,5 +1,7 @@
-﻿using EditorUtilities.CustomAttributes;
+﻿using System;
+using EditorUtilities.CustomAttributes;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
 public class Obstacle : MonoBehaviour
@@ -9,6 +11,12 @@ public class Obstacle : MonoBehaviour
     [ReadOnly, SerializeField] protected ObstacleConfiguration _obstacleConfiguration;
 
     private Rigidbody2D _rb;
+
+    private void Start()
+    {
+        int rngDir = (int)Mathf.Sign(Random.Range(-10, 10));
+        zRotationSpeed *= rngDir;
+    }
 
     private void Update()
     {
@@ -25,7 +33,7 @@ public class Obstacle : MonoBehaviour
         transform.localScale = Vector3.one * rngSize;
 
         float distanceFromPlayer = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
-        float travelDuration = Mathf.Lerp(config.minObstacleFallDuration, config.maxObstacleFallDuration, config.progressionCurve.Evaluate(GameManager.Instance.NormalizedMaxTime));
+        float travelDuration = Mathf.Lerp(config.maxObstacleFallDuration, config.minObstacleFallDuration, config.progressionCurve.Evaluate(GameManager.Instance.NormalizedMaxTime));
 
         //Apply % variation
         float variation = travelDuration * (config.fallDurationVariationPercentage / 2 / 100);
@@ -36,7 +44,7 @@ public class Obstacle : MonoBehaviour
         _rb.velocity = new Vector2(0, -yVel);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
         
@@ -46,6 +54,8 @@ public class Obstacle : MonoBehaviour
         {
             Instantiate(onCollisionEffect, transform.position, transform.rotation);
         }
+
+        Destroy(gameObject);
     }
 
     public virtual float GetScoreVariation() => _obstacleConfiguration.maxScoreVariation;

@@ -50,7 +50,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -61,7 +61,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 1
 --- !u!58 &9114123997188629563
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -91,7 +91,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -109,14 +109,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedb7ae6ee0e4e43b95bda822f0c676e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zRotationSpeed: 0
+  onCollisionEffect: {fileID: 0}
+  applyVelocityVariation: 1
+  zRotationSpeed: 20
   _obstacleConfiguration:
     obstaclePrefab: {fileID: 0}
     minObstacleSize: 0
     maxObstacleSize: 0
     maxScoreVariation: -50
-    minObstacleFallVelocity: 0
-    maxObstacleFallVelocity: 0
+    minObstacleFallDuration: 0
+    maxObstacleFallDuration: 0
+    fallDurationVariationPercentage: 20
     progressionCurve:
       serializedVersion: 2
       m_Curve: []
