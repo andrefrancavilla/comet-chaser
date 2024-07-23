@@ -35,7 +35,7 @@ public class GameManager : Singleton<GameManager>
         _currentGameDuration += Time.deltaTime;
     }
     
-    public void ChangeScore(int amount)
+    public void ChangeScore(float amount)
     {
         _currentScore += amount;
         uiScore.UpdateScore(_currentScore, true);

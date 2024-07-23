@@ -7,6 +7,9 @@ public class ObstacleConfiguration
     public GameObject obstaclePrefab;
     public float minObstacleSize;
     public float maxObstacleSize;
+
+    public float scoreVariation = -50;
+    
     [Space] 
     [Tooltip("In units/s")] public float minObstacleVelocity;
     [Tooltip("In units/s")] public float maxObstacleVelocity;
