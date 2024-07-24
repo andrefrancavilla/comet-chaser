@@ -180,7 +180,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.785
+  m_Radius: 0.55
 --- !u!114 &826974539146707670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onCollisionEffect: {fileID: 0}
-  applyVelocityVariation: 1
   zRotationSpeed: 20
   _obstacleConfiguration:
     obstaclePrefab: {fileID: 0}

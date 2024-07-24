@@ -1,19 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using EditorUtilities.CustomAttributes;
 using UnityEngine;
 using Utility;
 using Debug = System.Diagnostics.Debug;
+using Random = UnityEngine.Random;
 
 public class GameManager : Singleton<GameManager>
 {
     private const float DistanceToKeepFromBonusElements = 0.75f;
-
-    [Header("External References")]
-    [SerializeField] private UIScore uiScore;
+    public Action<float> onPlayerDamaged;
+    public Action<float> onBonusCollected;
+    public Action onGameOver;
 
     [Header("Game Configuration")] 
-    [SerializeField] private int maxPlayerLives = 3;
+    [SerializeField] private int playerLives = 3;
     [SerializeField] private int scorePerSecond = 1000; //1 punto ogni millesimo di secondo = 1000 punti al secondo
     [SerializeField] private float maxGameDurationSeconds = 300;
     [SerializeField, Range(0, 100)] private float onScoreLossSlowdownPercentage = 20;
@@ -39,6 +41,10 @@ public class GameManager : Singleton<GameManager>
     public float NormalizedMaxTime => Mathf.Clamp(_currentGameDuration / maxGameDurationSeconds, 0, 1);
     public float NormalizedObstacleSpawnTime => Mathf.Clamp(_currentGameDuration / timeToFastestObstacleSpawnInterval, 0, 1);
     public float NormalizedBonusSpawnTime => Mathf.Clamp(_currentGameDuration / timeToFastestBonusSpawnInterval, 0, 1);
+
+    public int PlayerLivesRemaining => playerLives;
+
+    public float CurrentScore => _currentScore;
 
     private Vector2 _minSpawnCoordinate;
     private Vector2 _maxSpawnCoordinate;
@@ -67,7 +73,7 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnBonusElements()
     {
-        while (maxPlayerLives >= 0)
+        while (playerLives >= 0)
         {
             _bonusElementsSpawning = true;
             float rngXPos = Random.Range(_minSpawnCoordinate.x, _maxSpawnCoordinate.x);
@@ -97,7 +103,7 @@ public class GameManager : Singleton<GameManager>
     
     private IEnumerator SpawnObstacles()
     {
-        while (maxPlayerLives >= 0)
+        while (playerLives >= 0)
         {
             float rngXPos = 0;
             do
@@ -116,8 +122,6 @@ public class GameManager : Singleton<GameManager>
             }
 
             float spawnInterval = Mathf.Lerp(maxObstacleSpawnInterval, minObstacleSpawnInterval, NormalizedObstacleSpawnTime);
-            UnityEngine.Debug.Log($"Spawn Interval: {spawnInterval}");
-
             yield return new WaitForSeconds(spawnInterval);
         }
         yield break;
@@ -125,10 +129,10 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
-        if (maxPlayerLives > 0)
+        if (playerLives >= 0)
         {
             _currentScore += Time.deltaTime * scorePerSecond;
-            uiScore.UpdateScore(_currentScore);
+            
             if (_currentGameDuration < maxGameDurationSeconds)
             {
                 _currentGameDuration += Time.deltaTime;
@@ -145,14 +149,22 @@ public class GameManager : Singleton<GameManager>
             _currentScore = 0;
         }
         
-        uiScore.UpdateScore(_currentScore, true);
-        
         int sign = (int)Mathf.Sign(amount);
         if (sign < 0)
         {
-            maxPlayerLives--;
-            Screenshake.Instance.ShakeScreen(0.5f, 0.25f);
+            playerLives--;
             _currentGameDuration *= 1 - onScoreLossSlowdownPercentage / 100;
+
+            if (playerLives < 0)
+            {
+                onGameOver?.Invoke();
+            }
+            
+            onPlayerDamaged?.Invoke(amount);
+        }
+        else
+        {
+            onBonusCollected?.Invoke(amount);
         }
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BackgroundParallax : MonoBehaviour
 {
-    [SerializeField] private float yScrollVelocity;
+    [SerializeField] private float startYScrollVelocity = 0.2f;
+    [SerializeField] private float maxYScrollVelocity;
     
     private SpriteRenderer _rend;
     private Material _mat;
@@ -21,7 +22,7 @@ public class BackgroundParallax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _currYScroll += yScrollVelocity * Time.deltaTime;
+        _currYScroll += Mathf.Lerp(startYScrollVelocity, maxYScrollVelocity, GameManager.Instance.NormalizedMaxTime) * Time.deltaTime;
         
         _mat.SetTextureOffset("_MainTex", new Vector2(0, _currYScroll));
     }

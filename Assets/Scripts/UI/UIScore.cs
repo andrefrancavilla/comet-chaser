@@ -21,30 +21,32 @@ public class UIScore : MonoBehaviour
     {
         _tmPro = GetComponent<TextMeshProUGUI>();
         _originalTextColor = _tmPro.color;
+        
+        GameManager.Instance.onPlayerDamaged += OnPlayerDamaged;
+        GameManager.Instance.onBonusCollected += OnBonusCollected;
+    }
+
+    private void OnBonusCollected(float diff)
+    {
+        _tmPro.color = _onScoreIncreasedColor;
+    }
+
+    private void OnPlayerDamaged(float diff)
+    {
+        _tmPro.color = _onScoreDecreasedColor;
     }
 
     private void Update()
     {
         _tmPro.color = Color.Lerp(_tmPro.color, _originalTextColor, Time.deltaTime / _colorInterpolationDuration);
+
+        _tmPro.text = GameManager.Instance.CurrentScore.ToString("##00");
     }
 
-    public void UpdateScore(float newScore, bool notifyChange = false)
+    private void OnDestroy()
     {
-        _tmPro.text = newScore.ToString("##00");
-
-        if (notifyChange)
-        {
-            float scoreDiff = newScore - _prevScore;
-            ViewScoreChangedFeedback(scoreDiff);
-        }
-        
-        
-        _prevScore = newScore;
-    }
-
-    private void ViewScoreChangedFeedback(float scoreDiff)
-    {
-        int sign = (int)Mathf.Sign(scoreDiff);
-        _tmPro.color = sign > 0 ? _onScoreIncreasedColor : _onScoreDecreasedColor;
+        if(GameManager.Instance == null) return;
+        GameManager.Instance.onPlayerDamaged -= OnPlayerDamaged;
+        GameManager.Instance.onBonusCollected -= OnBonusCollected;
     }
 }
