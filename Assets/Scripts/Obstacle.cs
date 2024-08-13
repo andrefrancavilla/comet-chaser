@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using EditorUtilities.CustomAttributes;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,16 +7,22 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] private GameObject onCollisionEffect;
+    [SerializeField] protected GameObject onCollisionEffect;
     [SerializeField, Tooltip("Degrees per second")] private float zRotationSpeed;
     [ReadOnly, SerializeField] protected ObstacleConfiguration _obstacleConfiguration;
 
     private Rigidbody2D _rb;
 
-    private void Start()
+    private IEnumerator Start()
     {
         int rngDir = (int)Mathf.Sign(Random.Range(-10, 10));
         zRotationSpeed *= rngDir;
+
+        SpriteRenderer rend = GetComponentInChildren<SpriteRenderer>();
+        yield return new WaitWhile(() => !rend.isVisible);
+        yield return new WaitWhile(() => rend.isVisible);
+        
+        Destroy(gameObject);
     }
 
     private void Update()
@@ -44,9 +51,12 @@ public class Obstacle : MonoBehaviour
         _rb.velocity = new Vector2(0, -yVel);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
+        
+        if(PlayerController.Instance.IsInvulnerable)
+            return;
         
         GameManager.Instance.ChangeScore(GetScoreVariation());
 

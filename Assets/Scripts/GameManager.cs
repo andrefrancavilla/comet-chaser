@@ -63,6 +63,8 @@ public class GameManager : Singleton<GameManager>
         //Increase offset by 1 to ensure items spawn off-screen
         _minSpawnCoordinate.y += 1;
         _maxSpawnCoordinate.y += 1;
+
+        Application.targetFrameRate = 60;
     }
 
     private void Start()

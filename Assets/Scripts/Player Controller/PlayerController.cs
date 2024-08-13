@@ -9,9 +9,12 @@ public class PlayerController : Singleton<PlayerController>
      * I've opted to use Unity's old input system due to the simplicity of the game
      * Most features present in Unity's new input system would be unused
      */
+    
+    public bool IsInvulnerable { get; private set; }
 
     [SerializeField] private int blinkAmount;
     [SerializeField] private float invulnerabilityDuration;
+    [SerializeField] private LayerMask playerColliderMask;
     
     private Camera _camera;
     private bool _moving;
@@ -45,10 +48,10 @@ public class PlayerController : Singleton<PlayerController>
 
     private IEnumerator BecomeInvulnerable()
     {
+        IsInvulnerable = true;
         Color color = _rend.color;
         color.a = 0.3f;
         _rend.color = color;
-        _col.enabled = false;
         for (int i = 0; i < blinkAmount; i++)
         {
             _rend.enabled = false;
@@ -59,7 +62,7 @@ public class PlayerController : Singleton<PlayerController>
 
         color.a = 1f;
         _rend.color = color;
-        _col.enabled = true;
+        IsInvulnerable = false;
     }
 
     void Update()
@@ -81,7 +84,7 @@ public class PlayerController : Singleton<PlayerController>
     private void Move(Vector2 screenPosition)
     {
         Ray ray = _camera.ScreenPointToRay(screenPosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, float.MaxValue, playerColliderMask);
         if(hit.transform && hit.transform.CompareTag("Player") || _moving)
         {
             Vector3 worldPos = _camera.ScreenToWorldPoint(screenPosition);
