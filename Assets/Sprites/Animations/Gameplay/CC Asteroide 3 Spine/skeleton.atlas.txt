@@ -1,0 +1,26 @@
+skeleton.png
+size:898,543
+filter:Linear,Linear
+pma:true
+Asteroide 3
+bounds:2,237,367,304
+Asteroide rotto 3_1
+bounds:659,2,237,353
+Asteroide rotto 3_2
+bounds:2,18,217,307
+rotate:90
+Asteroide rotto 3_3
+bounds:371,357,364,184
+Esplosione Asteroide 3
+bounds:371,69,286,286
+Frammento 1
+bounds:737,485,56,56
+Frammento 2
+bounds:786,438,45,46
+rotate:90
+Frammento 3
+bounds:737,438,45,47
+rotate:90
+Frammento 4
+bounds:795,497,44,48
+rotate:90

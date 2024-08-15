@@ -1,0 +1,14 @@
+skeleton.png
+size:278,198
+filter:Linear,Linear
+pma:true
+Asteroide Cattivo intero
+bounds:2,2,216,194
+Pietra 1
+bounds:220,139,56,57
+Pietra 2
+bounds:220,22,24,26
+Pietra 3
+bounds:220,89,45,48
+Pietra 4
+bounds:220,50,36,37

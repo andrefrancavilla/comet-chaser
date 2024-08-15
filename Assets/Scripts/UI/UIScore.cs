@@ -5,10 +5,16 @@ using EditorUtilities.CustomAttributes;
 using TMPro;
 using UnityEngine;
 
-public class UIScore : MonoBehaviour
+public class UIScore : Singleton<UIScore>
 {
     [SerializeField] private Color _onScoreDecreasedColor = Color.red; 
     [SerializeField] private Color _onScoreIncreasedColor = Color.green;
+
+    [Space] 
+    [SerializeField] private GameObject onScoreIncreasedUIEffect;
+    [SerializeField] private GameObject onScoreDecreasedUIEffects;
+    [Space]
+    
     [SerializeField, Tooltip("In Seconds")] private float _colorInterpolationDuration = 0.5f;
 
     private Color _originalTextColor;
@@ -29,18 +35,22 @@ public class UIScore : MonoBehaviour
     private void OnBonusCollected(float diff)
     {
         _tmPro.color = _onScoreIncreasedColor;
+        
+        Instantiate(onScoreIncreasedUIEffect, PlayerController.Instance.transform.position, Quaternion.identity, transform.root);
     }
 
     private void OnPlayerDamaged(float diff)
     {
         _tmPro.color = _onScoreDecreasedColor;
+
+        Instantiate(onScoreDecreasedUIEffects, PlayerController.Instance.transform.position, Quaternion.identity, transform.root);
     }
 
     private void Update()
     {
         _tmPro.color = Color.Lerp(_tmPro.color, _originalTextColor, Time.deltaTime / _colorInterpolationDuration);
 
-        _tmPro.text = GameManager.Instance.CurrentScore.ToString("##00");
+        _tmPro.text = GameManager.Instance.CurrentScore.ToString("###0");
     }
 
     private void OnDestroy()

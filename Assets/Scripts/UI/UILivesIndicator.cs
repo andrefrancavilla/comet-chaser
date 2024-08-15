@@ -3,44 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UILivesIndicator : MonoBehaviour
 {
-    [SerializeField] private Color onPlayerDamagedColor = Color.red;
-    [SerializeField] private Vector3 onPlayerDamagedSize = Vector3.one;
-    private TextMeshProUGUI _tmPro;
+    [SerializeField] private Sprite availableLife;
+    [SerializeField] private Sprite consumedLife;
+    [SerializeField] private GameObject uiLivesIndicator;
+    private List<Image> _uiLivesIndicators;
     
     // Start is called before the first frame update
     void Start()
     {
-        _tmPro = GetComponent<TextMeshProUGUI>();
+        _uiLivesIndicators = new List<Image>();
+        
         GameManager.Instance.onPlayerDamaged += OnPlayerDamaged;
+        for (int i = 0; i < GameManager.Instance.PlayerLivesRemaining; i++)
+        {
+            GameObject clone = Instantiate(uiLivesIndicator, transform.position, transform.rotation, transform);
+            if (clone.TryGetComponent(out Image spriteRenderer))
+            {
+                _uiLivesIndicators.Add(spriteRenderer);
+            }
+        }
+        
         UpdateCounter();
     }
 
     private void OnPlayerDamaged(float diff)
     {
-        _tmPro.color = onPlayerDamagedColor;
-        transform.localScale = onPlayerDamagedSize;
         UpdateCounter();
-    }
-
-    private void Update()
-    {
-        _tmPro.color = Color.Lerp(_tmPro.color, Color.white,   Time.deltaTime);
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, Time.deltaTime);
     }
 
     private void UpdateCounter()
     {
         int lives = GameManager.Instance.PlayerLivesRemaining;
-        if (lives > 0)
+
+        for (int i = 0; i < _uiLivesIndicators.Count; i++)
         {
-            _tmPro.text = $"{GameManager.Instance.PlayerLivesRemaining.ToString()} Lives Remaining";
-        }
-        else
-        {
-            _tmPro.text = $"Last Life Remaining";
+            _uiLivesIndicators[i].sprite = i < lives ? availableLife : consumedLife;
         }
     }
 

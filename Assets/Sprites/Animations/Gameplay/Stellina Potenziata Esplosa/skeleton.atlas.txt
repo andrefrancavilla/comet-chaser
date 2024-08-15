@@ -1,0 +1,31 @@
+skeleton.png
+size:937,560
+filter:Linear,Linear
+pma:true
+Frammento 1
+bounds:579,48,47,28
+Frammento 2
+bounds:852,378,48,28
+Frammento 3
+bounds:827,346,23,60
+Frammento 4
+bounds:560,13,17,63
+Frammento 5
+bounds:852,348,47,28
+Frammento 6
+bounds:907,97,29,18
+rotate:90
+Stellina P intera
+bounds:560,305,265,253
+Stellina P1
+bounds:764,128,175,162
+rotate:90
+Stellina P2
+bounds:560,78,202,225
+Stellina P3
+bounds:827,408,108,150
+Stellina P4
+bounds:764,16,110,141
+rotate:90
+bagliore esplosione
+bounds:2,2,556,556

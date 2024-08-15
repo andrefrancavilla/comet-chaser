@@ -15,6 +15,8 @@ public class GameManager : Singleton<GameManager>
     public Action onGameOver;
 
     [Header("Game Configuration")] 
+    [SerializeField] private Transform lhsSpawnPoint;
+    [SerializeField] private Transform rhsSpawnPoint;
     [SerializeField] private int playerLives = 3;
     [SerializeField] private int scorePerSecond = 1000; //1 punto ogni millesimo di secondo = 1000 punti al secondo
     [SerializeField] private float maxGameDurationSeconds = 300;
@@ -52,13 +54,14 @@ public class GameManager : Singleton<GameManager>
 
     private bool _bonusElementsSpawning;
     private float _bonusElementsXPosSpawn;
+    private bool _gameStarted;
 
     private void Awake()
     {
         _cam = Camera.main;
         Debug.Assert(_cam != null, nameof(_cam) + " != null");
-        _minSpawnCoordinate = _cam.ScreenToWorldPoint(new Vector3(0, Screen.height));
-        _maxSpawnCoordinate = _cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
+        _minSpawnCoordinate = lhsSpawnPoint.position;
+        _maxSpawnCoordinate = rhsSpawnPoint.position;
 
         //Increase offset by 1 to ensure items spawn off-screen
         _minSpawnCoordinate.y += 1;
@@ -67,10 +70,11 @@ public class GameManager : Singleton<GameManager>
         Application.targetFrameRate = 60;
     }
 
-    private void Start()
+    public void StartGame()
     {
         StartCoroutine(SpawnObstacles());
         StartCoroutine(SpawnBonusElements());
+        _gameStarted = true;
     }
 
     private IEnumerator SpawnBonusElements()
@@ -131,6 +135,8 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
+        if(!_gameStarted) return;
+        
         if (playerLives >= 0)
         {
             _currentScore += Time.deltaTime * scorePerSecond;

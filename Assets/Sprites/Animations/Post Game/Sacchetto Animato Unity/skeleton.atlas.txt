@@ -1,0 +1,13 @@
+skeleton.png
+size:751,481
+filter:Linear,Linear
+pma:true
+Laccio 2 copia
+bounds:672,319,71,160
+Sacchetto
+bounds:2,5,474,577
+rotate:90
+Stella
+bounds:581,2,168,164
+laccio 1 copia
+bounds:581,168,89,311

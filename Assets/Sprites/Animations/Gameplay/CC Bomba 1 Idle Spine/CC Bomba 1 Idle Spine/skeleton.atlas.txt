@@ -1,0 +1,12 @@
+skeleton.png
+size:1052,493
+filter:Linear,Linear
+pma:true
+Bagliore Bomba 1
+bounds:886,327,164,164
+Bagliore rosso Bomba 1
+bounds:2,2,489,489
+Bomba 1 Miccia
+bounds:886,104,119,221
+Bomba 1Base_1
+bounds:493,60,391,431

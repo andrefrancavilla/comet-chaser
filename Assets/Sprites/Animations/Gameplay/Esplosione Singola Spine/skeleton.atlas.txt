@@ -1,0 +1,6 @@
+skeleton.png
+size:291,290
+filter:Linear,Linear
+pma:true
+Esplosione
+bounds:2,2,287,286

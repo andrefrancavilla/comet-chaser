@@ -1,0 +1,12 @@
+skeleton.png
+size:1895,788
+filter:Linear,Linear
+pma:true
+Bagliore 1
+bounds:2,2,785,784
+Bagliore 2
+bounds:789,158,628,628
+Scintilla
+bounds:789,52,104,104
+Stellina potenziata
+bounds:1419,296,474,490

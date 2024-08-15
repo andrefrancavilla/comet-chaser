@@ -1,0 +1,27 @@
+skeleton.png
+size:772,290
+filter:Linear,Linear
+pma:true
+Asteroide Cattivo intero
+bounds:290,72,216,194
+rotate:90
+Asteroide Rotto 1
+bounds:660,7,97,131
+Asteroide Rotto 2
+bounds:486,23,105,172
+rotate:90
+Asteroide Rotto 3
+bounds:486,130,144,158
+Asteroide Rotto 4
+bounds:632,140,148,138
+rotate:90
+Esplosione
+bounds:2,2,286,286
+Pietra 1
+bounds:290,13,56,57
+Pietra 2
+bounds:395,5,24,26
+Pietra 3
+bounds:348,22,45,48
+Pietra 4
+bounds:395,33,36,37

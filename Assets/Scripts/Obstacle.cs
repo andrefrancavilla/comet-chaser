@@ -18,7 +18,7 @@ public class Obstacle : MonoBehaviour
         int rngDir = (int)Mathf.Sign(Random.Range(-10, 10));
         zRotationSpeed *= rngDir;
 
-        SpriteRenderer rend = GetComponentInChildren<SpriteRenderer>();
+        Renderer rend = GetComponentInChildren<Renderer>();
         yield return new WaitWhile(() => !rend.isVisible);
         yield return new WaitWhile(() => rend.isVisible);
         

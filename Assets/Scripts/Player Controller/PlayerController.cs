@@ -26,7 +26,7 @@ public class PlayerController : Singleton<PlayerController>
     private float _bonusElementsXPosSpawn;
 
     private Collider2D _col;
-    private SpriteRenderer _rend;
+    private Renderer _rend;
     
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class PlayerController : Singleton<PlayerController>
         GameManager.Instance.onPlayerDamaged += OnPlayerDamaged;
 
         _col = GetComponent<Collider2D>();
-        _rend = GetComponent<SpriteRenderer>();
+        _rend = GetComponentInChildren<Renderer>();
     }
 
     private void OnPlayerDamaged(float diff)
@@ -49,9 +49,9 @@ public class PlayerController : Singleton<PlayerController>
     private IEnumerator BecomeInvulnerable()
     {
         IsInvulnerable = true;
-        Color color = _rend.color;
+        Color color = _rend.material.GetColor("_Color");
         color.a = 0.3f;
-        _rend.color = color;
+        _rend.material.SetColor("_Color", color);
         for (int i = 0; i < blinkAmount; i++)
         {
             _rend.enabled = false;
@@ -61,7 +61,8 @@ public class PlayerController : Singleton<PlayerController>
         }
 
         color.a = 1f;
-        _rend.color = color;
+        _rend.material.SetColor("_Color", color);
+        
         IsInvulnerable = false;
     }
 

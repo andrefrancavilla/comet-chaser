@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class UIGameOver : MonoBehaviour
 {
-    public GameObject headsUpDisplay;
+    [SerializeField] private GameObject headsUpDisplay;
+    [SerializeField] private GameObject postGamePanel;
+    [SerializeField] private float endgameDurationSeconds = 2;
     
     // Start is called before the first frame update
     void Start()
@@ -22,18 +24,16 @@ public class UIGameOver : MonoBehaviour
         {
             child.gameObject.SetActive(true);
         }
+
+        StartCoroutine(ShowPostGame());
     }
 
-    public void TryAgain()
+    private IEnumerator ShowPostGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        yield return new WaitForSeconds(endgameDurationSeconds);
+        postGamePanel.SetActive(true);
     }
-
-    public void Quit()
-    {
-        Application.Quit();
-    }
-
+    
     private void OnDestroy()
     {
         if(GameManager.Instance == null) return;
