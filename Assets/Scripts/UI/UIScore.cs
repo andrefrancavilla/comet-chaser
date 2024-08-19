@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class UIScore : Singleton<UIScore>
 {
+    public Action<float> onApplyScore;
+    
     [SerializeField] private Color _onScoreDecreasedColor = Color.red; 
     [SerializeField] private Color _onScoreIncreasedColor = Color.green;
 
@@ -34,16 +36,31 @@ public class UIScore : Singleton<UIScore>
 
     private void OnBonusCollected(float diff)
     {
-        _tmPro.color = _onScoreIncreasedColor;
+        GameObject particles = Instantiate(onScoreIncreasedUIEffect, PlayerController.Instance.transform.position, Quaternion.identity, transform.root);
+        if(particles.TryGetComponent(out UIScoreStarsLerp scoreStars))
+        {
+            scoreStars.SpawnStars(diff);
+        }
         
-        Instantiate(onScoreIncreasedUIEffect, PlayerController.Instance.transform.position, Quaternion.identity, transform.root);
+        GameManager.Instance.StartCoroutine(WaitForScoreParticles(particles, diff, _onScoreIncreasedColor));
     }
 
     private void OnPlayerDamaged(float diff)
     {
-        _tmPro.color = _onScoreDecreasedColor;
+        GameObject particles = Instantiate(onScoreDecreasedUIEffects, PlayerController.Instance.transform.position, Quaternion.identity, transform.root);
+        if(particles.TryGetComponent(out UIScoreStarsLerp scoreStars))
+        {
+            scoreStars.SpawnStars(diff);
+        }
+        
+        GameManager.Instance.StartCoroutine(WaitForScoreParticles(particles, diff, _onScoreDecreasedColor));
+    }
 
-        Instantiate(onScoreDecreasedUIEffects, PlayerController.Instance.transform.position, Quaternion.identity, transform.root);
+    private IEnumerator WaitForScoreParticles(GameObject scoreParticleInstance, float scoreDiff, Color scoreColor)
+    {
+        yield return new WaitWhile(() => scoreParticleInstance != null);
+        _tmPro.color = scoreColor;
+        onApplyScore?.Invoke(scoreDiff);
     }
 
     private void Update()

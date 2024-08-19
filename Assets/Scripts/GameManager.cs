@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using EditorUtilities.CustomAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 using Utility;
 using Debug = System.Diagnostics.Debug;
 using Random = UnityEngine.Random;
@@ -14,6 +15,10 @@ public class GameManager : Singleton<GameManager>
     public Action<float> onBonusCollected;
     public Action onGameOver;
 
+    public BetterEvent onPlayerDamagedEvent;
+    public BetterEvent onBonusCollectedEvent;
+    public BetterEvent onGameOverEvent;
+    
     [Header("Game Configuration")] 
     [SerializeField] private Transform lhsSpawnPoint;
     [SerializeField] private Transform rhsSpawnPoint;
@@ -48,6 +53,9 @@ public class GameManager : Singleton<GameManager>
 
     public float CurrentScore => _currentScore;
 
+    public Vector2 lhsSpawnPosition => lhsSpawnPoint.position;
+    public Vector2 rhsSpawnPosition => rhsSpawnPoint.position;
+
     private Vector2 _minSpawnCoordinate;
     private Vector2 _maxSpawnCoordinate;
     private Camera _cam;
@@ -75,11 +83,13 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(SpawnObstacles());
         StartCoroutine(SpawnBonusElements());
         _gameStarted = true;
+
+        UIScore.Instance.onApplyScore += ApplyScoreChange;
     }
 
     private IEnumerator SpawnBonusElements()
     {
-        while (playerLives >= 0)
+        while (playerLives > 0)
         {
             _bonusElementsSpawning = true;
             float rngXPos = Random.Range(_minSpawnCoordinate.x, _maxSpawnCoordinate.x);
@@ -109,7 +119,7 @@ public class GameManager : Singleton<GameManager>
     
     private IEnumerator SpawnObstacles()
     {
-        while (playerLives >= 0)
+        while (playerLives > 0)
         {
             float rngXPos = 0;
             do
@@ -137,7 +147,7 @@ public class GameManager : Singleton<GameManager>
     {
         if(!_gameStarted) return;
         
-        if (playerLives >= 0)
+        if (playerLives > 0)
         {
             _currentScore += Time.deltaTime * scorePerSecond;
             
@@ -149,30 +159,37 @@ public class GameManager : Singleton<GameManager>
 
     }
     
-    public void ChangeScore(float amount)
+    public void NotifyScoreChange(float amount)
     {
-        _currentScore += amount;
-        if (_currentScore < 0)
-        {
-            _currentScore = 0;
-        }
-        
         int sign = (int)Mathf.Sign(amount);
         if (sign < 0)
         {
             playerLives--;
             _currentGameDuration *= 1 - onScoreLossSlowdownPercentage / 100;
 
-            if (playerLives < 0)
+            if (playerLives <= 0)
             {
                 onGameOver?.Invoke();
+                onGameOverEvent?.Invoke();
             }
             
             onPlayerDamaged?.Invoke(amount);
+            onPlayerDamagedEvent?.Invoke();
         }
         else
         {
             onBonusCollected?.Invoke(amount);
+            onBonusCollectedEvent?.Invoke();
+        }
+    }
+
+    //Method is executed when boost/nerf stars on screen reach ui score element
+    private void ApplyScoreChange(float amount)
+    {
+        _currentScore += amount;
+        if (_currentScore < 0)
+        {
+            _currentScore = 0;
         }
     }
 }

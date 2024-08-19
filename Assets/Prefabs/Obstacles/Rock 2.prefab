@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6993241327760456478
+--- !u!1 &4607166191942711215
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1696925704095133880}
-  - component: {fileID: 7819583270814883275}
-  - component: {fileID: 9114123997188629563}
-  - component: {fileID: 4784951559076983567}
+  - component: {fileID: 5611687300793370492}
+  - component: {fileID: 8825506143136804284}
+  - component: {fileID: 2928580227864591804}
+  - component: {fileID: 6571479783104765788}
   m_Layer: 0
   m_Name: Rock 2
   m_TagString: Untagged
@@ -19,30 +19,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1696925704095133880
+--- !u!4 &5611687300793370492
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6993241327760456478}
+  m_GameObject: {fileID: 4607166191942711215}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5924603810238214031}
+  - {fileID: 3579696167687734638}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &7819583270814883275
+--- !u!50 &8825506143136804284
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6993241327760456478}
+  m_GameObject: {fileID: 4607166191942711215}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -62,13 +62,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 1
---- !u!58 &9114123997188629563
+--- !u!58 &2928580227864591804
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6993241327760456478}
+  m_GameObject: {fileID: 4607166191942711215}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -97,13 +97,13 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.32
---- !u!114 &4784951559076983567
+--- !u!114 &6571479783104765788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6993241327760456478}
+  m_GameObject: {fileID: 4607166191942711215}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cedb7ae6ee0e4e43b95bda822f0c676e, type: 3}
@@ -125,7 +125,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
---- !u!1 &7818263101185672483
+--- !u!1 &5200611996952056979
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,10 +133,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5924603810238214031}
-  - component: {fileID: 7216636497659194194}
-  - component: {fileID: 6156225304916579257}
-  - component: {fileID: 7602133274450036598}
+  - component: {fileID: 3579696167687734638}
+  - component: {fileID: 7211531300590588767}
+  - component: {fileID: 3365481488670643864}
+  - component: {fileID: 8540330399870314020}
   m_Layer: 0
   m_Name: Spine GameObject (skeleton)
   m_TagString: Untagged
@@ -144,36 +144,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5924603810238214031
+--- !u!4 &3579696167687734638
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7818263101185672483}
+  m_GameObject: {fileID: 5200611996952056979}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1696925704095133880}
+  m_Father: {fileID: 5611687300793370492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7216636497659194194
+--- !u!33 &7211531300590588767
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7818263101185672483}
+  m_GameObject: {fileID: 5200611996952056979}
   m_Mesh: {fileID: 0}
---- !u!23 &6156225304916579257
+--- !u!23 &3365481488670643864
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7818263101185672483}
+  m_GameObject: {fileID: 5200611996952056979}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -187,7 +187,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15a22dd5613b7f24abb4ab254919087b, type: 2}
+  - {fileID: 2100000, guid: 04de80e99cfe4f54b876312bc0027ebc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -209,19 +209,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7602133274450036598
+--- !u!114 &8540330399870314020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7818263101185672483}
+  m_GameObject: {fileID: 5200611996952056979}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 028ab4b0cb9900a4aacd93381b422c83, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 7862e5212dba6ce43bd140429798fe08, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -249,6 +249,6 @@ MonoBehaviour:
   physicsMovementRelativeTo: {fileID: 0}
   updateTiming: 1
   unscaledTime: 0
-  _animationName: animation
+  _animationName: Asteroide 2_idle
   loop: 1
   timeScale: 1

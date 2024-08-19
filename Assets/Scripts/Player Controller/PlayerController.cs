@@ -15,6 +15,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private int blinkAmount;
     [SerializeField] private float invulnerabilityDuration;
     [SerializeField] private LayerMask playerColliderMask;
+    [SerializeField] private GameObject playerExplosion;
     
     private Camera _camera;
     private bool _moving;
@@ -32,8 +33,9 @@ public class PlayerController : Singleton<PlayerController>
     {
         _camera = Camera.main;
         Debug.Assert(_camera != null, nameof(_camera) + " != null");
-        _minXPos = _camera.ScreenToWorldPoint(new Vector3(0, 0)).x;
-        _maxXPos = _camera.ScreenToWorldPoint(new Vector3(Screen.width, 0)).x;
+        
+        _minXPos = GameManager.Instance.lhsSpawnPosition.x;
+        _maxXPos = GameManager.Instance.rhsSpawnPosition.x;
         
         GameManager.Instance.onPlayerDamaged += OnPlayerDamaged;
 
@@ -43,7 +45,15 @@ public class PlayerController : Singleton<PlayerController>
 
     private void OnPlayerDamaged(float diff)
     {
-        StartCoroutine(BecomeInvulnerable());
+        if (GameManager.Instance.PlayerLivesRemaining > 0)
+        {
+            StartCoroutine(BecomeInvulnerable());
+        }
+        else
+        {
+            Instantiate(playerExplosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 
     private IEnumerator BecomeInvulnerable()

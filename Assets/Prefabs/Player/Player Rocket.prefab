@@ -256,6 +256,7 @@ MonoBehaviour:
   playerColliderMask:
     serializedVersion: 2
     m_Bits: 64
+  playerExplosion: {fileID: 4200195422749384407, guid: 884f1e5a04c710a4184d8a45d624190d, type: 3}
 --- !u!70 &8385826649819645959
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

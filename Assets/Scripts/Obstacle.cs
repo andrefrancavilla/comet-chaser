@@ -58,11 +58,15 @@ public class Obstacle : MonoBehaviour
         if(PlayerController.Instance.IsInvulnerable)
             return;
         
-        GameManager.Instance.ChangeScore(GetScoreVariation());
+        GameManager.Instance.NotifyScoreChange(GetScoreVariation());
 
         if (onCollisionEffect != null)
         {
-            Instantiate(onCollisionEffect, transform.position, transform.rotation);
+            GameObject clone = Instantiate(onCollisionEffect, transform.position, transform.rotation);
+            if (clone.TryGetComponent(out Rigidbody2D rb))
+            {
+                rb.velocity = _rb.velocity;
+            }
         }
 
         Destroy(gameObject);

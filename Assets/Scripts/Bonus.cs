@@ -13,7 +13,7 @@ public class Bonus : Obstacle
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
-        GameManager.Instance.ChangeScore(GetScoreVariation());
+        GameManager.Instance.NotifyScoreChange(GetScoreVariation());
 
         if (onCollisionEffect != null)
         {
@@ -26,7 +26,7 @@ public class Bonus : Obstacle
     public override float GetScoreVariation()
     {
         Transform playerTransform = PlayerController.Instance.transform;
-        float playerDistFromCenter = Vector2.Distance(transform.position, playerTransform.position);
+        float playerDistFromCenter = Mathf.Abs(transform.position.x - playerTransform.position.x);
         return _baseScore + (_obstacleConfiguration.maxScoreVariation / (RegDiv + playerDistFromCenter));
     }
 }
