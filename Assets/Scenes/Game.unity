@@ -389,8 +389,8 @@ Transform:
   m_GameObject: {fileID: 137643333}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.48025, y: 0.48025, z: 1}
+  m_LocalPosition: {x: 0.0301, y: -0.0301, z: 0}
+  m_LocalScale: {x: 0.5330208, y: 0.5330208, z: 1.1098819}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4171,7 +4171,7 @@ MonoBehaviour:
   lhsSpawnPoint: {fileID: 47962754}
   rhsSpawnPoint: {fileID: 901150255}
   playerLives: 3
-  scorePerSecond: 0
+  scorePerSecond: 7
   maxGameDurationSeconds: 300
   onScoreLossSlowdownPercentage: 20
   _allObstacles:
@@ -4206,7 +4206,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  - obstaclePrefab: {fileID: 6993241327760456478, guid: 99035396d0369fd4998d256df192248d, type: 3}
+  - obstaclePrefab: {fileID: 6993241327760456478, guid: 88dc69546f992a24a9d4410ca0f33507, type: 3}
     minObstacleSize: 0.5
     maxObstacleSize: 1
     maxScoreVariation: -50
@@ -4237,7 +4237,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  - obstaclePrefab: {fileID: 8889570080313198490, guid: 88dc69546f992a24a9d4410ca0f33507, type: 3}
+  - obstaclePrefab: {fileID: 8889570080313198490, guid: 12340f40e4562d64b9bcafd017cbcbed, type: 3}
     minObstacleSize: 0.5
     maxObstacleSize: 1
     maxScoreVariation: -50
@@ -4404,7 +4404,7 @@ MonoBehaviour:
     iOSFeedbackStile: 0
   - vibrationEvent: 1
     useVibrationPattern: 0
-    vibrationLength: 50
+    vibrationLength: 100
     vibrationPattern: []
     iOSFeedbackStile: 4
 --- !u!1 &2074747996

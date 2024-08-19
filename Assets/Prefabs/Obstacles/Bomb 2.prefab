@@ -253,4 +253,4 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: Bomba 2 Idle
   loop: 1
-  timeScale: 1
+  timeScale: 0.3
