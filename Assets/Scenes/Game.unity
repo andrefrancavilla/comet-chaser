@@ -6781,295 +6781,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2346618890412484140, guid: 7dfc0af6eac32cd42a47cd1dfabfce1c, type: 3}
   m_PrefabInstance: {fileID: 2057568902}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2062352496
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2062352498}
-  - component: {fileID: 2062352497}
-  - component: {fileID: 2062352499}
-  m_Layer: 0
-  m_Name: Game Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2062352497
+--- !u!114 &2062352497 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2200809443682467027, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+  m_PrefabInstance: {fileID: 5777034295447315977}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062352496}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e815445ac5db534aa7cc06dbf6f0cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onPlayerDamagedEvent:
-    methodCalls:
-    - target: {fileID: 2062352499}
-      methodName: Vibrate
-      selectedEnumIndex: 0
-      floatValue: 0
-      intValue: 0
-      stringValue: 
-      boolValue: 0
-  onBonusCollectedEvent:
-    methodCalls:
-    - target: {fileID: 2062352499}
-      methodName: Vibrate
-      selectedEnumIndex: 1
-      floatValue: 0
-      intValue: 0
-      stringValue: 
-      boolValue: 0
-  onGameOverEvent:
-    methodCalls: []
-  lhsSpawnPoint: {fileID: 47962754}
-  rhsSpawnPoint: {fileID: 901150255}
-  playerLives: 3
-  scorePerSecond: 7
-  maxGameDurationSeconds: 60
-  onScoreLossSlowdownPercentage: 30
-  _allObstacles:
-  - obstaclePoolName: Rock 1
-    minObstacleSize: 0.5
-    maxObstacleSize: 1
-    maxScoreVariation: -50
-    minObstacleFallDuration: 0.1
-    maxObstacleFallDuration: 2
-    fallDurationVariationPercentage: 20
-    progressionCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  - obstaclePoolName: Rock 2
-    minObstacleSize: 0.5
-    maxObstacleSize: 1
-    maxScoreVariation: -50
-    minObstacleFallDuration: 0.1
-    maxObstacleFallDuration: 2
-    fallDurationVariationPercentage: 20
-    progressionCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  - obstaclePoolName: Rock 3
-    minObstacleSize: 0.5
-    maxObstacleSize: 1
-    maxScoreVariation: -50
-    minObstacleFallDuration: 0.4
-    maxObstacleFallDuration: 2
-    fallDurationVariationPercentage: 20
-    progressionCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  - obstaclePoolName: Bomb
-    minObstacleSize: 0.5
-    maxObstacleSize: 1
-    maxScoreVariation: -50
-    minObstacleFallDuration: 0.1
-    maxObstacleFallDuration: 2
-    fallDurationVariationPercentage: 20
-    progressionCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  - obstaclePoolName: Bomb 2
-    minObstacleSize: 0.5
-    maxObstacleSize: 1
-    maxScoreVariation: -50
-    minObstacleFallDuration: 0.1
-    maxObstacleFallDuration: 2
-    fallDurationVariationPercentage: 20
-    progressionCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  _allBonuses:
-  - obstaclePoolName: Star Fragment
-    minObstacleSize: 1
-    maxObstacleSize: 1
-    maxScoreVariation: 10
-    minObstacleFallDuration: 2
-    maxObstacleFallDuration: 2
-    fallDurationVariationPercentage: 0
-    progressionCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  minObstacleSpawnInterval: 0.2
-  maxObstacleSpawnInterval: 0.6
-  timeToFastestObstacleSpawnInterval: 120
-  bonusSpawnSequenceSize: 4
-  minBonusSpawnInterval: 1
-  maxBonusSpawnInterval: 5
-  timeToFastestBonusSpawnInterval: 300
---- !u!4 &2062352498
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062352496}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2062352499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062352496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43e311494b09e3f4998f8bd69155a1fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vibrationConfigs:
-  - vibrationEvent: 0
-    useVibrationPattern: 0
-    vibrationLength: 300
-    vibrationPattern: []
-    iOSFeedbackStile: 0
-  - vibrationEvent: 1
-    useVibrationPattern: 0
-    vibrationLength: 100
-    vibrationPattern: []
-    iOSFeedbackStile: 4
 --- !u!1 &2074747996
 GameObject:
   m_ObjectHideFlags: 0
@@ -7406,11 +7128,76 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e63679fd25f897646b19a32f7b0c94f9, type: 3}
+--- !u!1001 &5777034295447315977
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2200809443682467027, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: lhsSpawnPoint
+      value: 
+      objectReference: {fileID: 47962754}
+    - target: {fileID: 2200809443682467027, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: rhsSpawnPoint
+      value: 
+      objectReference: {fileID: 901150255}
+    - target: {fileID: 5610992438246414887, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: m_Name
+      value: Game Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825510204308185646, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825510204308185646, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825510204308185646, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825510204308185646, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825510204308185646, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825510204308185646, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825510204308185646, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825510204308185646, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825510204308185646, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825510204308185646, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f7db9d1e0c630f144a3771516c41c458, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 2062352498}
+  - {fileID: 5777034295447315977}
   - {fileID: 519420032}
   - {fileID: 1710046195}
   - {fileID: 137643336}
