@@ -22,8 +22,6 @@ public class Bonus : Obstacle
             {
                 rb.velocity = _rb.velocity;
             }
-
-            clone.transform.localScale = transform.localScale;
         }
 
         Destroy(gameObject);
