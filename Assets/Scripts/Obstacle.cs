@@ -11,7 +11,7 @@ public class Obstacle : MonoBehaviour
     [SerializeField, Tooltip("Degrees per second")] private float zRotationSpeed;
     [ReadOnly, SerializeField] protected ObstacleConfiguration _obstacleConfiguration;
 
-    private Rigidbody2D _rb;
+    protected Rigidbody2D _rb;
 
     private IEnumerator Start()
     {
@@ -21,8 +21,8 @@ public class Obstacle : MonoBehaviour
         Renderer rend = GetComponentInChildren<Renderer>();
         yield return new WaitWhile(() => !rend.isVisible);
         yield return new WaitWhile(() => rend.isVisible);
-        
-        Destroy(gameObject);
+
+        gameObject.SetActive(false);
     }
 
     private void Update()
@@ -67,9 +67,10 @@ public class Obstacle : MonoBehaviour
             {
                 rb.velocity = _rb.velocity;
             }
+            clone.transform.localScale = transform.localScale;
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public virtual float GetScoreVariation() => _obstacleConfiguration.maxScoreVariation;

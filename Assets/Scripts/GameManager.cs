@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using EditorUtilities.CustomAttributes;
+using InstantTools.PoolSystem;
 using UnityEngine;
 using UnityEngine.Events;
 using Utility;
@@ -99,15 +100,13 @@ public class GameManager : Singleton<GameManager>
 
             Vector2 spawnPoint = new Vector2(rngXPos, yPos);
             ObstacleConfiguration obstacleConfig = _allBonuses.GetRandom();
-            GameObject obstaclePrefab = obstacleConfig.obstaclePrefab;
             for (int i = 0; i < bonusSpawnSequenceSize; i++)
             {
-                GameObject clone = Instantiate(obstaclePrefab, spawnPoint, Quaternion.identity);
+                GameObject clone = PoolManager.ActivateObject(obstacleConfig.obstaclePoolName, spawnPoint, Quaternion.identity);
                 if (clone.TryGetComponent(out Obstacle obstacle))
                 {
                     obstacle.ConfigureObstacle(obstacleConfig);
                 }
-
 
                 yield return new WaitForSeconds(1f / bonusSpawnSequenceSize);
             }
@@ -130,8 +129,7 @@ public class GameManager : Singleton<GameManager>
 
             Vector2 spawnPoint = new Vector2(rngXPos, yPos);
             ObstacleConfiguration obstacleConfig = _allObstacles.GetRandom();
-            GameObject obstaclePrefab = obstacleConfig.obstaclePrefab;
-            GameObject clone = Instantiate(obstaclePrefab, spawnPoint, Quaternion.identity);
+            GameObject clone = PoolManager.ActivateObject(obstacleConfig.obstaclePoolName, spawnPoint, Quaternion.identity);
             if (clone.TryGetComponent(out Obstacle obstacle))
             {
                 obstacle.ConfigureObstacle(obstacleConfig);

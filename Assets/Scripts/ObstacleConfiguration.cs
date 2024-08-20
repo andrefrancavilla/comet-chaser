@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class ObstacleConfiguration
 {
-    public GameObject obstaclePrefab;
+    public string obstaclePoolName;
     public float minObstacleSize;
     public float maxObstacleSize;
 

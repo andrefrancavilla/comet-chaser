@@ -1,0 +1,8 @@
+In the Pooling Example Scene, there's a weapon script in which there's a modifiable string called "Projectile Type" that specifies what type of projectile must be extracted
+from the pool.
+The weapon script component is located in Player>Weapon Anchor within the hierarchy.
+
+If you set the projectile type to "Green Projectile", you will notice that upon clicking, the player will start shooting green projectiles instead of red ones.
+
+Note: As a proof of concept, the 'Green Projectile' object pool within Instant Pool is not set to dynamic, while "Red Projectile" is. This is why you encounter an error 
+when you shoot for a long period of time while using 'Green Projectile'. You can either increase the size of the 'Green Projectile' object pool, or set the pool to dynamic.

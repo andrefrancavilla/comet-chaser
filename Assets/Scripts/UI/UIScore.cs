@@ -65,7 +65,10 @@ public class UIScore : Singleton<UIScore>
 
     private void Update()
     {
-        _tmPro.color = Color.Lerp(_tmPro.color, _originalTextColor, Time.deltaTime / _colorInterpolationDuration);
+        if (!_tmPro.color.Compare(_originalTextColor))
+        {
+            _tmPro.color = Color.Lerp(_tmPro.color, _originalTextColor, Time.deltaTime / _colorInterpolationDuration);
+        }
 
         _tmPro.text = GameManager.Instance.CurrentScore.ToString("###0");
     }

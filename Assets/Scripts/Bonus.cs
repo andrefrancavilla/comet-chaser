@@ -17,7 +17,13 @@ public class Bonus : Obstacle
 
         if (onCollisionEffect != null)
         {
-            Instantiate(onCollisionEffect, transform.position, transform.rotation);
+            GameObject clone = Instantiate(onCollisionEffect, transform.position, transform.rotation);
+            if (clone.TryGetComponent(out Rigidbody2D rb))
+            {
+                rb.velocity = _rb.velocity;
+            }
+
+            clone.transform.localScale = transform.localScale;
         }
 
         Destroy(gameObject);
