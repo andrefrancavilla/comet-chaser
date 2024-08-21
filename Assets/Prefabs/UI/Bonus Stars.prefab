@@ -70,9 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6322de20ca3824f4e9a5479b56033a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starsPerScore: 0.5
-  moveSpeed: 150
+  starsPerScore: 0.35
+  moveSpeed: 135
   star: {fileID: 4604201755677300913, guid: 9cb281f0562fd7e43ba97e010914ddd0, type: 3}
-  spawnRadius: 1
-  minScale: 0.7
-  maxScale: 1
+  spawnRadius: 0.8
+  minScale: 0.4
+  maxScale: 0.7

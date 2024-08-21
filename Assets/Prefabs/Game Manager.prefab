@@ -68,13 +68,13 @@ MonoBehaviour:
   lhsSpawnPoint: {fileID: 0}
   rhsSpawnPoint: {fileID: 0}
   playerLives: 3
-  scorePerSecond: 7
-  maxGameDurationSeconds: 60
+  scorePerSecond: 5
+  maxGameDurationSeconds: 120
   onScoreLossSlowdownPercentage: 30
   _allObstacles:
   - obstaclePoolName: Rock 1
     minObstacleSize: 0.5
-    maxObstacleSize: 1
+    maxObstacleSize: 1.5
     maxScoreVariation: -50
     minObstacleFallDuration: 0.1
     maxObstacleFallDuration: 2
@@ -105,7 +105,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   - obstaclePoolName: Rock 2
     minObstacleSize: 0.5
-    maxObstacleSize: 1
+    maxObstacleSize: 1.5
     maxScoreVariation: -50
     minObstacleFallDuration: 0.1
     maxObstacleFallDuration: 2
@@ -136,7 +136,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   - obstaclePoolName: Rock 3
     minObstacleSize: 0.5
-    maxObstacleSize: 1
+    maxObstacleSize: 1.5
     maxScoreVariation: -50
     minObstacleFallDuration: 0.4
     maxObstacleFallDuration: 2
@@ -167,7 +167,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   - obstaclePoolName: Bomb
     minObstacleSize: 0.5
-    maxObstacleSize: 1
+    maxObstacleSize: 0.75
     maxScoreVariation: -50
     minObstacleFallDuration: 0.1
     maxObstacleFallDuration: 2
@@ -198,7 +198,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   - obstaclePoolName: Bomb 2
     minObstacleSize: 0.5
-    maxObstacleSize: 1
+    maxObstacleSize: 0.75
     maxScoreVariation: -50
     minObstacleFallDuration: 0.1
     maxObstacleFallDuration: 2
@@ -231,7 +231,7 @@ MonoBehaviour:
   - obstaclePoolName: Star Fragment
     minObstacleSize: 1
     maxObstacleSize: 1
-    maxScoreVariation: 10
+    maxScoreVariation: 20
     minObstacleFallDuration: 2
     maxObstacleFallDuration: 2
     fallDurationVariationPercentage: 0
